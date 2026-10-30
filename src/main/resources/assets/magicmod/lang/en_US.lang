@@ -1,0 +1,11 @@
+itemGroup.magicmod=Magic Staffs
+item.fire_staff.name=Staff of Fire
+item.fire_staff.desc=Right click: fireball | Sneak: flame nova
+item.ice_staff.name=Staff of Frost
+item.ice_staff.desc=Freezes enemies, water and the ground
+item.lightning_staff.name=Staff of Thunder
+item.lightning_staff.desc=Calls lightning where you aim
+item.blink_staff.name=Staff of Blink
+item.blink_staff.desc=Teleports you forward
+item.heal_staff.name=Staff of Healing
+item.heal_staff.desc=Heals you and nearby players

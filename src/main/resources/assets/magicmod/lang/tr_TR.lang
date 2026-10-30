@@ -1,0 +1,11 @@
+itemGroup.magicmod=Büyü Asaları
+item.fire_staff.name=Ateş Asası
+item.fire_staff.desc=Sağ tık: ateş topu | Eğilirken: alev patlaması
+item.ice_staff.name=Buz Asası
+item.ice_staff.desc=Düşmanları, suyu ve zemini dondurur
+item.lightning_staff.name=Şimşek Asası
+item.lightning_staff.desc=Baktığın yere yıldırım düşürür
+item.blink_staff.name=Işınlanma Asası
+item.blink_staff.desc=Seni ileri ışınlar
+item.heal_staff.name=Şifa Asası
+item.heal_staff.desc=Seni ve yakındaki oyuncuları iyileştirir

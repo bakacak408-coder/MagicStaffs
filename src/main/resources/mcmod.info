@@ -1,0 +1,8 @@
+[{
+  "modid": "magicmod",
+  "name": "Magic Staffs",
+  "description": "Fire, Ice, Lightning, Blink and Healing staffs.",
+  "version": "1.0",
+  "mcversion": "1.7.10",
+  "authorList": ["You"]
+}]
