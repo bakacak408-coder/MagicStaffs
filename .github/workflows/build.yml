@@ -3,9 +3,11 @@ name: Build MagicStaffs
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
   pull_request:
-    branches: [main]
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
@@ -35,7 +37,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: MagicStaffs
-          path: |
-            **/build/libs/*.jar
+          path: '**/build/libs/*.jar'
           if-no-files-found: error
 ```
