@@ -15,9 +15,10 @@ jobs:
           distribution: 'temurin'
           java-version: '8'
 
-      - name: Setup Gradle
+      - name: Setup Gradle 2.14.1
         uses: gradle/actions/setup-gradle@v3
         with:
+          gradle-version: '2.14.1'
           cache-disabled: true
 
       - name: Build Mod
