@@ -1,63 +1,41 @@
-name: Build MagicStaffs (Minecraft 1.7.10)
+```yaml
+name: Build MagicStaffs
 
 on:
   push:
-    branches: ["**"]
+    branches: [main]
   pull_request:
+    branches: [main]
   workflow_dispatch:
-
-permissions:
-  contents: read
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
 
     steps:
-      - name: Checkout source
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Set up Java 8
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: "8"
+          java-version: '8'
 
-      # ForgeGradle 1.2 is legacy software. Use its compatible Gradle directly
-      # instead of relying on a missing Gradle Wrapper or the hosted runner's
-      # preinstalled Gradle version.
-      - name: Install Gradle 2.14.1
-        shell: bash
-        run: |
-          set -euo pipefail
-          GRADLE_VERSION="2.14.1"
-          DIST_DIR="${RUNNER_TEMP}/gradle-${GRADLE_VERSION}"
-          curl --fail --location --retry 3             "https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip"             --output "${RUNNER_TEMP}/gradle-${GRADLE_VERSION}-bin.zip"
-          unzip -q "${RUNNER_TEMP}/gradle-${GRADLE_VERSION}-bin.zip" -d "${RUNNER_TEMP}"
-          echo "${DIST_DIR}/bin" >> "${GITHUB_PATH}"
-          "${DIST_DIR}/bin/gradle" --version
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '4.4.1'
 
       - name: Build mod
-        shell: bash
-        run: |
-          set -euo pipefail
-          gradle --no-daemon --stacktrace clean build
-
-      - name: List generated JARs
-        if: always()
-        shell: bash
-        run: |
-          echo "JAR files found under build/:"
-          find . -type f -path "*/build/libs/*.jar" -print || true
+        run: gradle --no-daemon --stacktrace clean build
 
       - name: Upload mod JAR
+        if: success()
         uses: actions/upload-artifact@v4
         with:
-          name: MagicStaffs-${{ github.sha }}
+          name: MagicStaffs
           path: |
             **/build/libs/*.jar
-            !**/build/libs/*-sources.jar
-            !**/build/libs/*-javadoc.jar
           if-no-files-found: error
-          retention-days: 14
+```
